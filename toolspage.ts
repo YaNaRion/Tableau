@@ -6,42 +6,45 @@ let hasTools = [{nom:"Outil numero 1 avec peu de visites", id:"asd12", visites: 
                       {nom: "Outil 6", id:"gfsdg54hdf",visites: 62, entregistrements:623, partages:623, suivis:623, credibilite:623,efficacite:623,note:623},
                       {nom:"Dernier outils avec beaucoup de visites et un long titre", id:"fcafasdr32", visites: 105923, entregistrements:723, partages:723, suivis:723, credibilite:723,efficacite:723,note:723}]
 
-window.addEventListener('load', this.populateTab.bind(this))
+// window.addEventListener('load', populateTab.bind(this));
+
+window.onload = populateTab;
+
 /*
 function seeTool(id: any) {
-    this.router.navigate(['/tool', 'single-tool', { toolID: id }])
+    router.navigate(['/tool', 'single-tool', { toolID: id }])
   }
 
 function  goHome(){
-    this.router.navigate(['/home'])
+    router.navigate(['/home'])
   }
 */
 function populateTab() {
   const conteneur = document.getElementById("conteneurTab");
-  for (let i = 0; 7 < i; i++) {
+  for (let i = 0; i < 7; i++) {
     let nouvLigne = document.createElement("ul");
     nouvLigne.classList.add("tableau");
     let tabNouvDiv:HTMLDivElement[] = [];
-    for (let j = 0; j < 9; j++) {
+    for (let j = 0; j < 8; j++) {
       let text;
       if (j === 0)
-        text = this.hasTools[j].nom;
+        text = hasTools[i].nom;
       else if (j === 1)
-        text = this.hasTools[j].id;
+        text = hasTools[i].id;
       else if (j === 2)
-        text = this.hasTools[j].visites;
+        text = hasTools[i].visites;
       else if (j === 3)
-        text = this.hasTools[j].entregistrements;
+        text = hasTools[i].entregistrements;
       else if (j === 4)
-        text = this.hasTools[j].partages;
+        text = hasTools[i].partages;
       else if (j === 5)
-        text = this.hasTools[j].suivis;
+        text = hasTools[i].suivis;
       else if (j === 6)
-        text = this.hasTools[j].credibilite;
+        text = hasTools[i].credibilite;
       else if (j === 7)
-        text = this.hasTools[j].efficacite;
+        text = hasTools[i].efficacite;
       else if (j === 8)
-        text = this.hasTools[j].note;
+        text = hasTools[i].note;
       let nouvDiv = document.createElement("div");
       nouvDiv.textContent = text;
       tabNouvDiv.push(nouvDiv);
@@ -50,5 +53,3 @@ function populateTab() {
     conteneur?.appendChild(nouvLigne);
   }
 }
-
-
