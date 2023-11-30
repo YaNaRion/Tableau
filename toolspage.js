@@ -6,11 +6,24 @@ var hasTools = [{ nom: "Outil numero 1 avec peu de visites", id: "asd12", visite
     { nom: "Outil 6", id: "gfsdg54hdf", visites: 62, entregistrements: 623, partages: 623, suivis: 623, credibilite: 623, efficacite: 623, note: 623 },
     { nom: "Dernier outils avec beaucoup de visites et un long titre", id: "fcafasdr32", visites: 105923, entregistrements: 723, partages: 723, suivis: 723, credibilite: 723, efficacite: 723, note: 723 }];
 // window.addEventListener('load', populateTab.bind(this));
-window.onload = populateTab;
-var toolButton = document.getElementById("go_home_button");
-toolButton.addEventListener('click', function () { return goHome(); });
-var homeButton = document.getElementById("go_tool_button");
-homeButton.addEventListener('click', function () { return seeTool(); });
+window.onload = function () {
+    var url = window.location.href;
+    var segmentUrl = url.split('/');
+    var dernierSegmentUrl = segmentUrl[segmentUrl.length - 1];
+    console.log(dernierSegmentUrl);
+    if (dernierSegmentUrl === "tool.html") {
+        populateTab();
+        console.log(window.location);
+        var goHomeB = document.getElementById("go_home_button");
+        console.log(goHomeB);
+        goHomeB.addEventListener('click', function (event) { return goHome(); });
+    }
+    else if (dernierSegmentUrl === "home.html") {
+        var goToolB = document.getElementById("go_tool_button");
+        console.log(goToolB);
+        goToolB.addEventListener('click', function (event) { return seeTool(); });
+    }
+};
 function seeTool() {
     window.location.href = "./tool.html";
 }
@@ -44,6 +57,7 @@ function populateTab() {
             else if (j === 8)
                 text = hasTools[i].note;
             var nouvDiv = document.createElement("div");
+            nouvDiv.className = "elementTableau";
             nouvDiv.textContent = text;
             tabNouvDiv.push(nouvDiv);
             nouvLigne.appendChild(nouvDiv);

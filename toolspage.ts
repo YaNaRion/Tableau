@@ -7,13 +7,20 @@ let hasTools = [{nom:"Outil numero 1 avec peu de visites", id:"asd12", visites: 
                       {nom:"Dernier outils avec beaucoup de visites et un long titre", id:"fcafasdr32", visites: 105923, entregistrements:723, partages:723, suivis:723, credibilite:723,efficacite:723,note:723}]
 
 // window.addEventListener('load', populateTab.bind(this));
-window.onload = populateTab;
-
-const toolButton = document.getElementById("go_home_button");
-toolButton.addEventListener('click', () => goHome());
-
-const homeButton = document.getElementById("go_tool_button");
-homeButton.addEventListener('click', () => seeTool());
+window.onload = () => {
+  const url = window.location.href;
+  const segmentUrl = url.split('/');
+  const dernierSegmentUrl = segmentUrl[segmentUrl.length -1];
+  if (dernierSegmentUrl === "tool.html"){ // Ce n'est pas la manière la plus efficace, mais fonctionnel dans ce petit site web
+    populateTab();
+    console.log(window.location);
+    const goHomeB = document.getElementById("go_home_button");
+    goHomeB.addEventListener('click', (event) => goHome());
+  } else if (dernierSegmentUrl === "home.html") {
+    const goToolB = document.getElementById("go_tool_button");
+    goToolB.addEventListener('click', (event) => seeTool());
+  }
+};
 
 function seeTool() {
   window.location.href = "./tool.html";
@@ -50,6 +57,7 @@ function populateTab() {
       else if (j === 8)
         text = hasTools[i].note;
       let nouvDiv = document.createElement("div");
+      nouvDiv.className = "elementTableau";
       nouvDiv.textContent = text;
       tabNouvDiv.push(nouvDiv);
       nouvLigne.appendChild(nouvDiv);

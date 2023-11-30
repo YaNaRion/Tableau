@@ -30,6 +30,9 @@ main {
     padding: 10px;
 }
 
+.elementTableau {
+    max-height: 40px;
+}
 .tableau {
     display: grid;
     flex-direction: column;
