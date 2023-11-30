@@ -1,0 +1,1 @@
+import { ToolsStatPage } from 'tool';

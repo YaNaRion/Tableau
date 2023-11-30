@@ -7,15 +7,16 @@ var hasTools = [{ nom: "Outil numero 1 avec peu de visites", id: "asd12", visite
     { nom: "Dernier outils avec beaucoup de visites et un long titre", id: "fcafasdr32", visites: 105923, entregistrements: 723, partages: 723, suivis: 723, credibilite: 723, efficacite: 723, note: 723 }];
 // window.addEventListener('load', populateTab.bind(this));
 window.onload = populateTab;
-/*
-function seeTool(id: any) {
-    router.navigate(['/tool', 'single-tool', { toolID: id }])
-  }
-
-function  goHome(){
-    router.navigate(['/home'])
-  }
-*/
+var toolButton = document.getElementById("go_home_button");
+toolButton.addEventListener('click', function () { return goHome(); });
+var homeButton = document.getElementById("go_tool_button");
+homeButton.addEventListener('click', function () { return seeTool(); });
+function seeTool() {
+    window.location.href = "./tool.html";
+}
+function goHome() {
+    window.location.href = "./home.html";
+}
 function populateTab() {
     var conteneur = document.getElementById("conteneurTab");
     for (var i = 0; i < 7; i++) {

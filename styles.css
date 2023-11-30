@@ -10,7 +10,8 @@
 
 main {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    position: center;
 }
 
 #titre {
@@ -22,6 +23,11 @@ main {
 
 #legende {
     color: #857f7f;
+
+}
+.elementLegende {
+    border-bottom: 2px solid #857f7f;
+    padding: 10px;
 }
 
 .tableau {
